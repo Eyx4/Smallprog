@@ -1,6 +1,1 @@
-<script>function i(){for(var o="",t=document.getElementById("i").value,n=0;n<t.length;n++){var e=parseInt(t.charAt(n));isNaN(e)?o+="&":o+=String.fromCharCode(e+96)}document.getElementById("o").innerText=o}</script>
-<h1>SmallProg Interpreter</h1>
-<textarea id="i" placeholder="Enter SmallProg program"></textarea><br>
-<button onclick="i()">Interpret</button>
-<p>Hint: 8 5 12 12 15 0 23 15 18 12 4 33 prints Hello, World!</p>
-<div id="o"></div>
+<script>function interpret(){var input=document.getElementById("input").value.trim().split(" ").map(e=>parseInt(e));document.getElementById("output").innerText=input.map(e=>isNaN(e)?'&':String.fromCharCode(e+96)).join("")}</script><h1>SmallProg Interpreter</h1><textarea id="input" placeholder="Enter SmallProg program"></textarea><br><button onclick="interpret()">Interpret</button><div id="output"></div>
