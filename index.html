@@ -1,0 +1,5 @@
+<script>function i(){for(var o="",t=document.getElementById("i").value,n=0;n<t.length;n++){var e=parseInt(t.charAt(n));isNaN(e)?o+="&":o+=String.fromCharCode(e+96)}document.getElementById("o").innerText=o}</script>
+<h1>SmallProg Interpreter</h1>
+<textarea id="i" placeholder="Enter SmallProg program"></textarea><br>
+<button onclick="i()">Interpret</button>
+<div id="o"></div>
