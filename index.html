@@ -1,1 +1,31 @@
-<script>function interpret(){var input=document.getElementById("input").value.trim().split(" ").map(e=>parseInt(e));document.getElementById("output").innerText=input.map(e=>isNaN(e)?'&':String.fromCharCode(e+96)).join("")}</script><h1>SmallProg Interpreter</h1> <textarea id="input" placeholder="Enter SmallProg program"></textarea><br><button onclick="interpret()">Interpret</button><div id="output"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmallProg Interpreter</title>
+</head>
+<body>
+    <h1>SmallProg Interpreter</h1>
+    <textarea id="input" placeholder="Enter SmallProg program" style="height: 150px;"></textarea><br>
+    <button onclick="interpret()">Interpret</button>
+    <div id="output"></div>
+
+    <script>
+        function interpret() {
+            var input = document.getElementById("input").value.trim().split("\n"); // Split input by lines
+            var output = [];
+
+            // Process each line of input
+            input.forEach(function(line) {
+                var values = line.trim().split(" ").map(e => parseInt(e)); // Split line by spaces and convert to numbers
+                var lineOutput = values.map(e => isNaN(e) ? '&' : String.fromCharCode(e + 96)).join(""); // Interpret each value in the line
+                output.push(lineOutput); // Store the interpreted line
+            });
+
+            // Display all interpreted lines
+            document.getElementById("output").innerText = output.join("\n");
+        }
+    </script>
+</body>
+</html>
