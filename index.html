@@ -33,7 +33,7 @@
 
         function downloadFile() {
             var content = document.getElementById("input").value;
-            var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            var blob = new Blob([content], { type: 'application/octet-stream' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
