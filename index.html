@@ -9,9 +9,12 @@
     <h1>SmallProg Interpreter</h1>
     <textarea id="input" placeholder="Enter SmallProg program" style="height: 150px;"></textarea><br>
     <button onclick="interpret()">Interpret</button>
-    <p>Hint(Only works on specific browsers):Spacebar is number 32</p>
+    <p>Hint (Only works on specific browsers): Spacebar is number 32</p>
     <div id="output"></div>
-
+    <br>
+    <button onclick="downloadFile()">Download as .spr</button>
+    <input type="file" id="fileInput" accept=".spr" onchange="loadFile(event)">
+  
     <script>
         function interpret() {
             var input = document.getElementById("input").value.trim().split("\n"); // Split input by lines
@@ -26,6 +29,29 @@
 
             // Display all interpreted lines
             document.getElementById("output").innerText = output.join("\n");
+        }
+
+        function downloadFile() {
+            var content = document.getElementById("input").value;
+            var blob = new Blob([content], { type: 'text/plain' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'program.spr';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function loadFile(event) {
+            var file = event.target.files[0];
+            if (!file) return;
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var contents = e.target.result;
+                document.getElementById('input').value = contents;
+            };
+            reader.readAsText(file);
         }
     </script>
 </body>
