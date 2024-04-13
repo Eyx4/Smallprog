@@ -33,11 +33,11 @@
 
         function downloadFile() {
             var content = document.getElementById("input").value;
-            var blob = new Blob([content], { type: 'text/plain' });
+            var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
-            a.download = 'program.spr';
+            a.download = 'program.spr'; // Specify the filename with .spr extension
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
